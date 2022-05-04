@@ -16,13 +16,11 @@ class User(Base):
     name = Column(String(250), nullable=False)
 
 class LogIn(Base):
-    __tablename__ = 'address'
-    # Here we define columns for the table address.
-    # Notice that each column is also a normal Python instance attribute.
+    __tablename__ = 'Login'
+
     id = Column(Integer, primary_key=True)
-    street_name = Column(String(250))
-    street_number = Column(String(250))
-    post_code = Column(String(250), nullable=False)
+    name = Column(String(250))
+    lastname = Column(String(250))
     login_id = Column(Integer, ForeignKey('login.id'))
     LogIn = relationship(User)
 
