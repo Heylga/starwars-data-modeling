@@ -14,14 +14,13 @@ class User(Base):
     # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
+    email = Column(String(200), nullable=False)
 
 class LogIn(Base):
     __tablename__ = 'Login'
 
-    id = Column(Integer, primary_key=True)
-    name = Column(String(250))
-    lastname = Column(String(250))
-    login_id = Column(Integer, ForeignKey('login.id'))
+    email = Column(String, ForeignKey('user.email'), primary_key=True)
+    password = Column(String(250))
     LogIn = relationship(User)
 
 
