@@ -27,13 +27,13 @@ class LogIn(Base):
     LogIn = relationship(User)
 
 
-
 class Favorites(Base):
     __tablename__ = 'favorites'
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('user.id'))
     characters_id = Column(Integer, ForeignKey('characters.id'))
     planets_id = Column(Integer, ForeignKey('planets.id'))
+    starships = Column(Integer, ForeignKey('starships.id'))
     favorites = relationship(User)
     
 
