@@ -16,12 +16,19 @@ class User(Base):
     name = Column(String(250), nullable=False)
     email = Column(String(200), nullable=False)
 
+class Signup(Base):
+    __tablename__ = 'Signup'
+
+    email = Column(String, ForeignKey('user.email'), primary_key=True)
+    password = Column(String(250))
+    Signup = relationship(User)
+
 class LogIn(Base):
     __tablename__ = 'Login'
 
     email = Column(String, ForeignKey('user.email'), primary_key=True)
     password = Column(String(250))
-    LogIn = relationship(User)
+    LogIn = relationship(Signup)
 
 
 class Favorites(Base):
